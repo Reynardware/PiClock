@@ -17,6 +17,7 @@ from PyQt4.QtCore import QUrl
 from PyQt4.QtCore import Qt
 from PyQt4.QtNetwork import QNetworkReply
 from PyQt4.QtNetwork import QNetworkRequest
+from PyQt4.QtNetwork import QNetworkProxy
 from subprocess import Popen
 
 sys.dont_write_bytecode = True
@@ -1151,11 +1152,11 @@ for i in range(0, 9):
 
 manager = QtNetwork.QNetworkAccessManager()
 
-# proxy = QNetworkProxy()
-# proxy.setType(QNetworkProxy.HttpProxy)
-# proxy.setHostName("localhost")
-# proxy.setPort(8888)
-# QNetworkProxy.setApplicationProxy(proxy)
+proxy = QNetworkProxy()
+proxy.setType(QNetworkProxy.HttpProxy)
+proxy.setHostName("localhost")
+proxy.setPort(3128)
+QNetworkProxy.setApplicationProxy(proxy)
 
 stimer = QtCore.QTimer()
 stimer.singleShot(10, qtstart)
@@ -1163,6 +1164,6 @@ stimer.singleShot(10, qtstart)
 # print radarurl(Config.radar1,radar1rect)
 
 w.show()
-w.showFullScreen()
+#w.showFullScreen()
 
 sys.exit(app.exec_())
